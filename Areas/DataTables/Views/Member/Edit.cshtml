@@ -1,0 +1,81 @@
+﻿@model Group_Members
+
+@{
+    ViewData["Title"] = "Add/Edit Member";
+}
+<style>
+    h1 {
+        text-align: center;
+        color: black;
+    }
+    #card {
+        background-color: white;
+    }
+</style>
+<div class="container w3-blue-grey">
+    <div class="row w3-padding-16">
+        <h1>Add/Edit Member</h1>
+    </div>
+
+    <form asp-action="Edit" method="post">
+        <div asp-validation-summary="All"
+             class="text-danger">
+        </div>
+
+
+        <div class="form-group">
+            <label asp-for="Member_Type">Type</label>
+            <input asp-for="Member_Type" class="form-control">
+        </div>
+
+        <div class="form-group">
+            <label asp-for="Date_joined">Date Joined</label>
+            <input asp-for="Date_joined" class="form-control">
+        </div>
+
+        <div class="form-group">
+            <label asp-for="Date_terminated">Date Left</label>
+            <input asp-for="Date_terminated" class="form-control">
+        </div>
+
+
+        <div class="form-group">
+            <label asp-for="Comment">Comments</label>
+            <input asp-for="Comment" class="form-control">
+        </div>
+
+        @using Microsoft.AspNetCore.Identity
+        @using Treehuggers_WebApp01.Models
+        @inject UserManager<ApplicationUser> userManager
+        @inject treehon1_SQLContext context
+        @{
+            var user = await userManager.GetUserAsync(User);
+            string email = user.Email;
+            List<User> users = context.Users.ToList();
+
+
+            User user1 = users.Find(u => u.username_email == email);
+            int currentUserID = user1.UserID;
+        }
+
+        @if (Model.UserID == 0)
+        {
+            <input type="hidden" asp-for="UserID" value="@currentUserID" />
+
+        }
+        else
+        {
+            <input type="hidden" asp-for="UserID" />
+        }
+
+        <input type="hidden" asp-for="GroupID" />
+
+        <input type="hidden" asp-for="GroupMemberID" />
+
+        <button type="submit" class="btn btn-primary">
+            Save
+        </button>
+        <a asp-area="DataTables" asp-controller="Member" asp-action="Member"
+           class="btn btn-primary">Cancel</a>
+    </form>
+</div>

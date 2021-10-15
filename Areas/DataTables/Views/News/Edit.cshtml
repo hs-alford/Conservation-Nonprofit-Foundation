@@ -1,0 +1,75 @@
+﻿@model News
+
+@{
+    ViewData["Title"] = "Add/Edit News";
+}
+<style>
+    h1 {
+        text-align: center;
+        color: black;
+    }
+    #card {
+        background-color: white;
+    }
+</style>
+<div class="container w3-blue-grey">
+    <div class="row w3-padding-16">
+        <h1>Add/Edit News</h1>
+    </div>
+
+    <form asp-action="Edit" method="post">
+        <div asp-validation-summary="All"
+             class="text-danger">
+        </div>
+
+        <div class="form-group">
+            <label asp-for="NewsDate">News Date</label>
+            <input asp-for="NewsDate" class="form-control">
+        </div>
+
+        <div class="form-group">
+            <label asp-for="NewsTitle">Title</label>
+            <input asp-for="NewsTitle" class="form-control">
+        </div>
+
+        <div class="form-group">
+            <label asp-for="NewsDescrip">News Description</label>
+            <textarea class="form-control" asp-for="NewsDescrip" rows="3"></textarea>
+        </div>
+
+        @using Microsoft.AspNetCore.Identity
+        @using Treehuggers_WebApp01.Models
+        @inject UserManager<ApplicationUser> userManager
+        @inject treehon1_SQLContext context
+        @{
+            var user = await userManager.GetUserAsync(User);
+            string email = user.Email;
+            List<User> users = context.Users.ToList();
+
+
+            User user1 = users.Find(u => u.username_email == email);
+            int currentUserID = user1.UserID;
+        }
+
+        @if (Model.UserID == 0)
+        {
+            <input type="hidden" asp-for="UserID" value="@currentUserID" />
+
+        }
+        else
+        {
+            <input type="hidden" asp-for="UserID" />
+        }
+
+
+
+
+        <input type="hidden" asp-for="NewsID" />
+
+        <button type="submit" class="btn btn-primary">
+            Save
+        </button>
+        <a asp-area="DataTables" asp-controller="News" asp-action="News"
+           class="btn btn-primary">Cancel</a>
+    </form>
+</div>

@@ -1,0 +1,66 @@
+﻿@*Sets the outer layout to _Layout*@
+@{
+    Layout = "_Layout";
+}
+
+
+<head>
+    <style>
+        /* Set height of the grid so .sidenav can be 100% (adjust as needed) */
+        .row.content {
+            height: 550px
+        }
+
+        /* Set gray background color and 100% height */
+        .sidenav {
+            background-color: #f1f1f1;
+            height: 100%;
+        }
+    </style>
+</head>
+
+@*Uses UserManger from Identity to find the current user and get their email and first name
+to be used in the links and heading *@
+
+@using Microsoft.AspNetCore.Identity
+@inject UserManager<ApplicationUser> userManager
+@inject SignInManager<ApplicationUser> signInManager
+@{
+    var user = await userManager.GetUserAsync(User);
+    string email = user.Email;
+    string firstName = user.FirstName;
+}
+
+<div class="container-fluid">
+    <div class="row content">
+        <div class="col-sm-3 sidenav hidden-xs">
+            <h2>Welcome @firstName!</h2>
+
+            <ul class="nav nav-pills nav-stacked">
+                <li>
+                    <a class="btn btn-primary"
+                       asp-area="Member" asp-controller="Home" asp-action="Account" asp-route-email="@email">View Account</a>
+                </li>
+                <li>
+                    <a class="btn btn-primary"
+                       asp-area="Member" asp-controller="Home" asp-action="MembershipList" asp-route-email="@email" >Membership</a>
+                </li>
+                <li>
+                    <a class="btn btn-primary"
+                       asp-area="Member" asp-controller="Home" asp-action="MembershipTrans" asp-route-email="@email">Transactions</a>
+                </li>
+            </ul><br>
+                 <ul class="nav nav-pills align-bottom">
+                     <li>
+                         <a class="btn btn-primary btn-sm"
+                            asp-area="Member" asp-controller="Home" asp-action="Index">
+                             <span class="glyphicon glyphicon-arrow-left"></span> Back To Member Page</a>
+                     </li>
+                 </ul>
+        </div>
+        <br>
+        @*This is the point in the layout where the view using it is rendered *@
+        @RenderBody()
+
+    </div>
+</div>

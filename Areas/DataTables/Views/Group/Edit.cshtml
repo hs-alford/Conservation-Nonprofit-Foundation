@@ -1,0 +1,72 @@
+﻿@model Groups
+
+@{
+    ViewData["Title"] = "Add/Edit Group";
+}
+<style>
+    h1 {
+        text-align: center;
+        color: black;
+    }
+    #card {
+        background-color: white;
+    }
+</style>
+<div class="container w3-blue-grey">
+    <div class="row w3-padding-16">
+        <h1>Add/Edit Group</h1>
+    </div>
+
+    <form asp-action="Edit" method="post">
+        <div asp-validation-summary="All"
+             class="text-danger">
+        </div>
+
+        
+
+        <div class="form-group">
+            <label asp-for="Group_Name">Name</label>
+            <input asp-for="Group_Name" class="form-control">
+        </div>
+
+        <div class="form-group">
+            <label asp-for="Group_Type">Group Status</label>
+            <select class="form-control" asp-for="Group_Type">
+                <option value="G">Group</option>
+                <option value="C">Committee</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="Group_Status">Group Status</label>
+            <select class="form-control" asp-for="Group_Status">
+                <option value="A">Active</option>
+                <option value="I">Inactive</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="Group_Desc">Group Description</label>
+            <textarea class="form-control" asp-for="Group_Desc" rows="3"></textarea>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="Group_Start_Date">Start Date</label>
+            <input asp-for="Group_Start_Date" class="form-control">
+        </div>
+
+        <div class="form-group">
+            <label asp-for="Group_Stop_Date">Stop Date</label>
+            <input asp-for="Group_Stop_Date" class="form-control">
+        </div>
+
+
+        <input type="hidden" asp-for="GroupID" />
+
+        <button type="submit" class="btn btn-primary">
+            Save
+        </button>
+        <a asp-area="DataTables" asp-controller="Group" asp-action="Group"
+           class="btn btn-primary">Cancel</a>
+    </form>
+</div>

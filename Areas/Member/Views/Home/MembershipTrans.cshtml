@@ -1,0 +1,48 @@
+﻿@model IEnumerable<Membership_Transactions>
+@{
+    Layout = "_MemberLayout";
+}
+
+@* Uses the _MemberLayout and the model class IEnumerable<MembershipTransactions>
+in order to find the current user's row values. *@
+
+<div class="col-sm-9">
+    <h2>
+        Membership Transactions
+    </h2>
+    <table class="table table-bordered table-striped table-responsive table-condensed w3-card-4">
+        <thead>
+            <tr>
+
+                <th>UserID</th>
+                <th>Amount</th>
+                <th>Transaction Date</th>
+                <th>Firstname</th>
+                <th>Lastname</th>
+                <th>Email</th>
+                <th>PaymentID</th>
+                <th>Payment Method</th>
+                <th>Comment</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var memtrans in Model)
+            {
+                <tr>
+
+                    <td>@memtrans.UserID</td>
+                    <td>@memtrans.Trans_Amt</td>
+                    <td>@memtrans.Trans_Date</td>
+                    <td>@memtrans.Firstname</td>
+                    <td>@memtrans.Lastname</td>
+                    <td>@memtrans.username_email</td>
+                    <td>@memtrans.PmtID</td>
+                    <td>@memtrans.Pmt_Method</td>
+                    <td>@memtrans.Comment</td>
+
+                </tr>
+            }
+
+        </tbody>
+    </table>
+</div>

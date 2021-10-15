@@ -1,0 +1,68 @@
+﻿@model Treehuggers_WebApp01.ViewModel.treehuggersViewModel
+@{
+    Layout = "_TableLayout";
+    ViewData["Title"] = "News";
+}
+
+
+<!--News Table-->
+<h2>News</h2>
+
+<div class="w3-bar w3-light-grey w3-border">
+    @if (User.IsInRole("Admin"))
+    {
+
+        <a class="w3-bar-item w3-button w3-mobile" asp-area="Admin" asp-controller="Home" asp-action="Index">
+            <span class="glyphicon glyphicon-arrow-left"></span>Go Back
+        </a>
+    }
+    @if (User.IsInRole("Staff"))
+    {
+
+        <a class="w3-bar-item w3-button w3-mobile" asp-area="Staff" asp-controller="Home" asp-action="Index">
+            <span class="glyphicon glyphicon-arrow-left"></span>Go Back
+        </a>
+    }
+    <a class="w3-bar-item w3-button w3-mobile" 
+       asp-area="DataTables" asp-controller="News" asp-action="Add">New News Entry</a>
+    <input type="text" class="form-control w3-bar-item w3-input w3-white w3-mobile" id="myInput" placeholder="Search..">
+</div>
+<table class="w3-table-all w3-small w3-card-4" id="myTable">
+    <thead>
+        <tr>
+            <th>News ID</th>
+            <th>News Date</th>
+            <th>News Title</th>
+            <th>News Description</th>
+            <th>User ID</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var news in Model.News)
+        {
+            <tr>
+                <td>
+                    @news.NewsID
+                    <a class="btn btn-primary"
+                       asp-area="DataTables" asp-controller="News" asp-action="Edit" asp-route-id="@news.NewsID">Edit</a>
+                </td>
+                <td>@news.NewsDate</td>
+                <td>@news.NewsTitle</td>
+                <td>@news.NewsDescrip</td>
+                <td>@news.UserID</td>
+
+            </tr>
+        }
+    </tbody>
+</table>
+
+<script>
+    $(document).ready(function () {
+        $("#myInput").on("keyup", function () {
+            var value = $(this).val().toLowerCase();
+            $("#myTable tr").filter(function () {
+                $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+            });
+        });
+    });
+</script>

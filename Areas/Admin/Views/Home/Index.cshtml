@@ -1,0 +1,140 @@
+﻿@model Treehuggers_WebApp01.ViewModel.treehuggersViewModel
+
+@{
+    ViewData["Title"] = "Admin Page";
+}
+<style>
+    #card {
+        background-color: white;
+    }
+
+    .panel-body .btn:not(.btn-block) {
+        width: 200px;
+        margin-bottom: 20px;
+        margin-top: 15px;
+    }
+    .panel {
+        align-content: center;
+        margin-top: 50px;
+        margin-bottom: 200px;
+    }
+</style>
+
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-2">
+            
+        </div>
+        <div class="col-md-8">
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <h3 class="panel-title">
+                        <span class="glyphicon glyphicon-home"></span> Admin Menu
+                    </h3>
+                </div>
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-xs-4 col-md-4">
+                            <a class="btn btn-primary btn-lg" role="button"
+                               asp-area="DataTables" asp-controller="Reports" asp-action="Index">
+                                <span class="glyphicon glyphicon-folder-open"></span> <br />View Reports
+                            </a>
+                        </div>
+                        <div class="col-xs-4 col-md-4">
+                            <a class="btn btn-success btn-lg" role="button"
+                               asp-area="DataTables" asp-controller="Tables" asp-action="Tables">
+                                <span class="glyphicon glyphicon-user"></span> <br />Data Tables
+                            </a>
+
+                        </div>
+                        <div class="col-xs-4 col-md-4">
+                            <a class="btn btn-success btn-lg" role="button"
+                               asp-area="Admin" asp-controller="ApplicationUser" asp-action="Index">
+                                <span class="glyphicon glyphicon-user"></span> <br />Application Users
+                            </a>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <div class="col-md-2">
+
+        </div>
+    </div>
+</div>
+
+
+
+
+@*<ul class="w3-ul w3-border">
+        <li><h2>Names</h2></li>
+        <li>
+            <div class="row">
+                <a class="btn btn-primary"
+                   asp-area="DataTables" asp-controller="Reports" asp-action="FundBalance">Fund Balance</a>
+            </div>
+        </li>
+        <li>
+            <div class="row">
+                <a class="btn btn-primary"
+                   asp-area="DataTables" asp-controller="Reports" asp-action="FundList">Fund List</a>
+            </div>
+        </li>
+        <li>
+            <div class="row">
+                <a class="btn btn-primary"
+                   asp-area="DataTables" asp-controller="Reports" asp-action="FundTransDetail">Fund Transaction Details</a>
+            </div>
+        </li>
+        <li>
+            <div class="row">
+                <a class="btn btn-primary"
+                   asp-area="DataTables" asp-controller="Reports" asp-action="CalEventsDetail">Calendar Event Details</a>
+            </div>
+        </li>
+        <li>
+            <div class="row">
+                <a class="btn btn-primary"
+                   asp-area="DataTables" asp-controller="Reports" asp-action="NewsDetail">News Details</a>
+            </div>
+        </li>
+        <li>
+            <div class="row">
+                <a class="btn btn-primary"
+                   asp-area="DataTables" asp-controller="Reports" asp-action="ContactList">Contact List</a>
+            </div>
+        </li>
+        <li>
+            <div class="row">
+                <a class="btn btn-primary"
+                   asp-area="DataTables" asp-controller="Reports" asp-action="ContactTransaction">Contact Transactions</a>
+            </div>
+        </li>
+        <li>
+            <div class="row">
+                <a class="btn btn-primary"
+                   asp-area="DataTables" asp-controller="Reports" asp-action="GroupList">Group List</a>
+            </div>
+        </li>
+        <li>
+            <div class="row">
+                <a class="btn btn-primary"
+                   asp-area="DataTables" asp-controller="Reports" asp-action="GroupMembersList">Group Members List</a>
+            </div>
+        </li>
+        <li>
+            <div class="row">
+                <a class="btn btn-primary"
+                   asp-area="DataTables" asp-controller="Reports" asp-action="MembershipList">Membership List</a>
+            </div>
+        </li>
+        <li>
+            <div class="row">
+                <a class="btn btn-primary"
+                   asp-area="DataTables" asp-controller="Reports" asp-action="MembershipTransactions">Membership Transactions</a>
+            </div>
+        </li>
+    </ul>*@

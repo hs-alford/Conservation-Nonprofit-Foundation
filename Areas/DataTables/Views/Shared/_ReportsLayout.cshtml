@@ -1,0 +1,65 @@
+﻿@{
+    Layout = "_Layout";
+}
+
+@*Shared layout for the report views. Displays the grey navbar under the top one. *@
+
+@*if statement used to decide which button to display based on the current user role.*@
+@if (User.IsInRole("Admin"))
+{
+    <a class="btn btn-primary" asp-area="Admin" asp-controller="Home" asp-action="Index">Go Back</a>
+}
+@if (User.IsInRole("Staff"))
+{
+    <a class="btn btn-primary" asp-area="Staff" asp-controller="Home" asp-action="Index">Go Back</a>
+}
+<h1>Reports</h1>
+<div class="row">
+
+    <div class="w3-bar w3-border w3-round w3-light-grey w3-small">
+        <a class="w3-bar-item w3-button"
+           asp-area="DataTables" asp-controller="Reports" asp-action="FundBalance">FundBalances</a>
+        <a class="w3-bar-item w3-button"
+           asp-area="DataTables" asp-controller="Reports" asp-action="FundList">FundList</a>
+        <a class="w3-bar-item w3-button"
+           asp-area="DataTables" asp-controller="Reports" asp-action="FundTransDetail">FundTransDetail</a>
+        <a class="w3-bar-item w3-button"
+               asp-area="DataTables" asp-controller="Reports" asp-action="CalEventsDetail">EventDetails</a>
+        <a class="w3-bar-item w3-button"
+               asp-area="DataTables" asp-controller="Reports" asp-action="NewsDetail">NewsDetails</a>
+        <a class="w3-bar-item w3-button"
+               asp-area="DataTables" asp-controller="Reports" asp-action="ContactList">ContactList</a>
+        <a class="w3-bar-item w3-button"
+               asp-area="DataTables" asp-controller="Reports" asp-action="ContactTransaction">ContactTrans</a>
+        <a class="w3-bar-item w3-button"
+               asp-area="DataTables" asp-controller="Reports" asp-action="GroupList">GroupList</a>
+        <a class="w3-bar-item w3-button"
+               asp-area="DataTables" asp-controller="Reports" asp-action="GroupMembersList">GroupMembersList</a>
+        <a class="w3-bar-item w3-button"
+               asp-area="DataTables" asp-controller="Reports" asp-action="MembershipList">MembershipList</a>
+        <a class="w3-bar-item w3-button"
+               asp-area="DataTables" asp-controller="Reports" asp-action="MembershipTransactions">MembershipTrans</a>
+    </div>
+
+
+    <div class="container">
+        @RenderBody()
+    </div>
+</div>
+
+
+
+
+
+@*<div id="menu1" class="tab-pane fade">
+        <h3>Menu 1</h3>
+        <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+    </div>
+    <div id="menu2" class="tab-pane fade">
+        <h3>Menu 2</h3>
+        <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam.</p>
+    </div>
+    <div id="menu3" class="tab-pane fade">
+        <h3>Menu 3</h3>
+        <p>Eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
+    </div>*@

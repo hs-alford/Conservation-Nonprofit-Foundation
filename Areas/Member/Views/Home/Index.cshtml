@@ -1,0 +1,88 @@
+﻿
+@{
+    ViewData["Title"] = "Treehugger's Member Page";
+    Layout = "_MemberLayout";
+}
+
+
+@using Microsoft.AspNetCore.Identity
+@inject UserManager<ApplicationUser> userManager
+@inject SignInManager<ApplicationUser> signInManager
+@{
+    var user = await userManager.GetUserAsync(User);
+    string email = user.Email;
+    string firstName = user.FirstName;
+}
+
+@* Index view for the member's page *@
+
+
+
+<div class="col-sm-9">
+    <div class="well">
+        <h1 style="text-align:center;">Treehugger's Member Page</h1>
+    </div>
+    <div class="row">
+        <div class="col-sm-3">
+            <div class="well">
+                <h4>Group List</h4>
+                
+            </div>
+        </div>
+        <div class="col-sm-3">
+            <div class="well">
+                <h4>Group Members List</h4>
+                
+            </div>
+        </div>
+        <div class="col-sm-3">
+            <div class="well">
+                <h4>Calendar Events</h4>
+                
+            </div>
+        </div>
+        <div class="col-sm-3">
+            <div class="well">
+                <h4>News Details</h4>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-3">
+            <div class="well">
+                <a class="btn btn-primary"
+                   asp-area="DataTables" asp-controller="Reports" asp-action="GroupList">View</a>
+            </div>
+        </div>
+        <div class="col-sm-3">
+            <div class="well">
+                <a class="btn btn-primary"
+                asp-area="DataTables" asp-controller="Reports" asp-action="GroupMembersList">View</a>
+            </div>
+        </div>
+        <div class="col-sm-3">
+            <div class="well">
+                <a class="btn btn-primary"
+                   asp-area="DataTables" asp-controller="Reports" asp-action="CalEventsDetail">View</a>
+            </div>
+        </div>
+        <div class="col-sm-3">
+            <div class="well">
+                <a class="btn btn-primary"
+                   asp-area="DataTables" asp-controller="Reports" asp-action="NewsDetail">View</a>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-8">
+            <div class="well">
+                <p>Text</p>
+            </div>
+        </div>
+        <div class="col-sm-4">
+            <div class="well">
+                <p>Text</p>
+            </div>
+        </div>
+    </div>
+</div>

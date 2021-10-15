@@ -1,0 +1,39 @@
+﻿@model User
+@{
+    ViewData["Title"] = "Account Page";
+    Layout = "_MemberLayout";
+}
+
+@*View which displays the user's account data*@
+
+<div class="col-sm-9">
+    <div class="row">
+        <a class="btn btn-primary"
+           asp-area="Member" asp-controller="Home" asp-action="Edit" asp-route-id="@Model.UserID">Edit Profile</a>
+        <h2 style="text-align:center;">Account Member Profile</h2>
+    </div>
+    <div class="row">
+        <div class="col-sm-6">
+            <ul class="w3-ul w3-border">
+                <li><h2>User Information</h2></li>
+                <li>Firstname :  @Model.FirstName</li>
+                <li>LastName:  @Model.LastName</li>
+                <li>Monthly Dues: @Model.Monthly_Dues</li>
+                <li>Phone: @Model.Phone</li>
+                <li>Email: @Model.username_email</li>
+                <li>Contact Preference: @Model.ContactPrefrence</li>
+            </ul>
+        </div>
+        <div class="col-sm-6">
+            <ul class="w3-ul w3-border">
+                <li><h2>Address Information</h2></li>
+                <li>Street Address :  @Model.Street_Address1 
+                @Model.Street_Address2</li>
+                <li>City:  @Model.City</li>
+                <li>State: @Model.State</li>
+                <li>Zipcode: @Model.Zip</li>
+
+            </ul>
+        </div>
+    </div>
+</div>

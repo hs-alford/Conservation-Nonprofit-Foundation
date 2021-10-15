@@ -1,0 +1,124 @@
+﻿@model Contact
+
+@{
+    ViewData["Title"] = "Add/Edit Contact";
+}
+<style>
+    h1 {
+        text-align: center;
+        color: black;
+    }
+    #card {
+        background-color: white;
+    }
+</style>
+<div class="container w3-blue-grey">
+    <div class="row w3-padding-16">
+        <h1>Add/Edit Contact</h1>
+    </div>
+
+    <form asp-action="Edit" method="post">
+        <div asp-validation-summary="All"
+             class="text-danger">
+        </div>
+
+        <div class="form-group">
+            <label asp-for="ContactID">ContactID</label>
+            <input asp-for="ContactID" class="form-control">
+        </div>
+
+        <div class="form-group">
+            <label asp-for="username_email">Email</label>
+            <input asp-for="username_email" class="form-control">
+        </div>
+
+        <div class="form-group">
+            <label asp-for="FirstName">Firstname</label>
+            <input asp-for="FirstName" class="form-control">
+        </div>
+
+        <div class="form-group">
+            <label asp-for="LastName">Lastname</label>
+            <input asp-for="LastName" class="form-control">
+        </div>
+
+
+        <div class="form-group">
+            <label asp-for="Status">Status</label>
+            <select class="form-control" asp-for="Status">
+                <option value="A">Active</option>
+                <option value="I">Inactive</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="Street_Address1">Street Address</label>
+            <input asp-for="Street_Address1" class="form-control">
+        </div>
+
+        <div class="form-group">
+            <label asp-for="Street_Address2">Address Line 2</label>
+            <input asp-for="Street_Address2" class="form-control">
+        </div>
+
+        <div class="form-group">
+            <label asp-for="City">City</label>
+            <input asp-for="City" class="form-control">
+        </div>
+
+        <div class="form-group">
+            <label asp-for="State">State</label>
+            <input asp-for="State" class="form-control">
+        </div>
+
+        <div class="form-group">
+            <label asp-for="Zip">Zipcode</label>
+            <input asp-for="Zip" class="form-control">
+        </div>
+
+        <div class="form-group">
+            <label asp-for="Phone">Phone Number</label>
+            <input asp-for="Phone" class="form-control">
+        </div>
+
+        <div class="form-group">
+            <label asp-for="Monthly_Dues">Monthly Dues</label>
+            <input asp-for="Monthly_Dues" class="form-control">
+        </div>
+
+        <div class="form-group">
+            <label asp-for="Date_Joined">Today's Date</label>
+            <input asp-for="Date_Joined" class="form-control">
+        </div>
+
+        <div class="form-group">
+            <label asp-for="ContactPrefrence">Contact Preference</label>
+            <select class="form-control" asp-for="ContactPrefrence">
+                <option value="1">Email</option>
+                <option value="2">Phone</option>
+                <option value="3">Mail</option>
+                <option value="4">In Person</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="SolicitedBy">Solicited By</label>
+            <input asp-for="SolicitedBy" class="form-control">
+        </div>
+
+        <div class="form-group">
+            <label asp-for="Comments">Comments</label>
+            <textarea class="form-control" asp-for="Comments" rows="3"></textarea>
+        </div>
+
+
+
+        <input type="hidden" asp-for="ContactID" />
+
+        <button type="submit" class="btn btn-primary">
+            Save
+        </button>
+        <a asp-area="DataTables" asp-controller="Contact" asp-action="Contact"
+           class="btn btn-primary">Cancel</a>
+    </form>
+</div>

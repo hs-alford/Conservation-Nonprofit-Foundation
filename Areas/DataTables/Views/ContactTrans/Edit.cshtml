@@ -1,0 +1,89 @@
+﻿@model Contact_Trans
+
+@{
+    ViewData["Title"] = "Add/Edit Contact Transaction";
+}
+<style>
+    h1 {
+        text-align: center;
+        color: black;
+    }
+    #card {
+        background-color: white;
+    }
+</style>
+<div class="container w3-blue-grey">
+    <div class="row w3-padding-16">
+        <h1>Add/Edit Contact Transaction</h1>
+    </div>
+
+    <form asp-action="Edit" method="post">
+        <div asp-validation-summary="All"
+             class="text-danger">
+        </div>
+
+        
+
+
+
+        <div class="form-group">
+            <label asp-for="Con_Date">Contact Date</label>
+            <input asp-for="Con_Date" class="form-control">
+        </div>
+
+        <div class="form-group">
+            <label asp-for="Con_Method">Contact Method</label>
+            <select class="form-control" asp-for="Con_Method">
+                <option value="1">Email</option>
+                <option value="2">Phone</option>
+                <option value="3">Mail</option>
+                <option value="4">In Person</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="Con_Staff_Name">Staff Name</label>
+            <input asp-for="Con_Staff_Name" class="form-control">
+        </div>
+
+        <div class="form-group">
+            <label asp-for="Con_Comments">Comments</label>
+            <textarea class="form-control" asp-for="Con_Comments" rows="3"></textarea>
+        </div>
+
+        @using Microsoft.AspNetCore.Identity
+        @using Treehuggers_WebApp01.Models
+        @inject UserManager<ApplicationUser> userManager
+        @inject treehon1_SQLContext context
+        @{
+            var user = await userManager.GetUserAsync(User);
+            string email = user.Email;
+            List<User> users = context.Users.ToList();
+
+
+            User user1 = users.Find(u => u.username_email == email);
+            int currentUserID = user1.UserID;
+        }
+
+        @if (Model.UserID == 0)
+        {
+            <input type="hidden" asp-for="UserID" value="@currentUserID" />
+
+        }
+        else
+        {
+            <input type="hidden" asp-for="UserID" />
+        }
+
+        <input type="hidden" asp-for="ContactID" />
+
+
+        <input type="hidden" asp-for="Contact_TransID" />
+
+        <button type="submit" class="btn btn-primary">
+            Save
+        </button>
+        <a asp-area="DataTables" asp-controller="ContactTrans" asp-action="ContactTrans"
+           class="btn btn-primary">Cancel</a>
+    </form>
+</div>

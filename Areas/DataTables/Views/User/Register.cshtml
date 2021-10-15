@@ -1,0 +1,137 @@
+﻿@model Treehuggers_WebApp01.ViewModel.RegisterViewModel
+@{
+    ViewData["Title"] = "Add New User";
+}
+
+
+
+
+<div class="container-fluid w3-blue-grey">
+    <div class="row">
+
+        <div class="col-md-3 text-center w3-padding-32">
+            <span class="glyphicon glyphicon-tree-conifer w3-blue-grey" style="font-size:300px;padding-top:50%;"></span>
+            <span class="glyphicon glyphicon-tree-conifer" style="font-size:300px;padding-top:50%;"></span>
+        </div>
+
+        <div class="col-md-6">
+
+            <div class="w3-card-4 card" style="background-color: white;">
+                <form asp-action="Register" method="post">
+                    <h2 style="color:black;padding-bottom:15px;text-align:center">Create New User Account:</h2>
+                    <div asp-validation-summary="All" class="text-danger"></div>
+
+                    <div class="row">
+                        <div class="form-group col-sm-7">
+                            <label asp-for="Email">Email Address:</label>
+                            <input asp-for="Email" class="form-control" placeholder="Email Address" />
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="form-group col-sm-7">
+                            <label asp-for="Username">Username: </label>
+                            <input asp-for="Username" class="form-control" placeholder="Username" />
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="form-group col-sm-7">
+                            <label asp-for="Password">Password: </label>
+                            <input asp-for="Password" class="form-control" type="password" />
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="form-group col-sm-7">
+                            <label asp-for="ConfirmPassword">Confirm Password: </label>
+                            <input asp-for="ConfirmPassword" class="form-control" type="password" />
+                        </div>
+                    </div>
+
+
+                    <div class="row">
+                        <div class="form-group col-sm-4">
+                            <label asp-for="FirstName">Firstname: </label>
+                            <input asp-for="FirstName" class="form-control" placeholder="Firstname" />
+                        </div>
+
+                        <div class="form-group col-sm-4">
+                            <label asp-for="LastName">Lastname: </label>
+                            <input asp-for="LastName" class="form-control" placeholder="Lastname" />
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label asp-for="Street_Address1">Street Address</label>
+                        <input asp-for="Street_Address1" class="form-control">
+                    </div>
+
+                    <div class="form-group">
+                        <label asp-for="Street_Address2">Address Line 2</label>
+                        <input asp-for="Street_Address2" class="form-control">
+                    </div>
+
+                    <div class="form-group">
+                        <label asp-for="City">City</label>
+                        <input asp-for="City" class="form-control">
+                    </div>
+
+                    <div class="form-group">
+                        <label asp-for="State">State</label>
+                        <input asp-for="State" class="form-control">
+                    </div>
+
+                    <div class="form-group">
+                        <label asp-for="Zip">Zipcode</label>
+                        <input asp-for="Zip" class="form-control">
+                    </div>
+
+                    <div class="form-group">
+                        <label asp-for="Phone">Phone Number</label>
+                        <input asp-for="Phone" class="form-control">
+                    </div>
+
+                    <div class="form-group">
+                        <label asp-for="ContactPrefrence">Contact Preference</label>
+                        <select class="form-control" asp-for="ContactPrefrence">
+                            <option value="1">Email</option>
+                            <option value="2">Phone</option>
+                            <option value="3">Mail</option>
+                            <option value="4">In Person</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label asp-for="Monthly_Dues">Monthly Dues</label>
+                        <input asp-for="Monthly_Dues" class="form-control">
+                    </div>
+
+
+
+                    <div class="form-group">
+                        <label asp-for="SolicitedBy">Solicited By</label>
+                        <input asp-for="SolicitedBy" class="form-control">
+                    </div>
+
+                    <div class="form-group">
+                        <label asp-for="Comments">Comments</label>
+                        <textarea class="form-control" asp-for="Comments" rows="3"></textarea>
+                    </div>
+
+
+
+
+                    <button class="btn btn-primary" type="submit">Register</button>
+                    <a asp-area="" asp-controller="User" asp-action="User" class="btn btn-primary">Cancel</a>
+
+                </form>
+            </div>
+        </div>
+
+        <div class="col-md-3 text-center w3-padding-32">
+            <span class="glyphicon glyphicon-tree-conifer" style="font-size:300px;padding-top:50%;"></span>
+            <span class="glyphicon glyphicon-tree-conifer" style="font-size:300px;padding-top:50%;"></span>
+        </div>
+    </div>
+</div>

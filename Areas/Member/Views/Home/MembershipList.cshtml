@@ -1,0 +1,46 @@
+﻿@model Membership_List
+@{ 
+    Layout = "_MemberLayout";
+}
+
+@*Shows the current user's row's in membership list*@
+
+<div class="col-sm-9">
+    <h2>Member Info</h2>
+        <table class="table table-striped table-responsive table-condensed w3-card-4">
+            <thead>
+                <tr>
+                    <th>Firstname</th>
+                    <th>Lastname</th>
+                    <th>Street Address 1</th>
+                    <th>Street Address 2</th>
+                    <th>City</th>
+                    <th>State</th>
+                    <th>Zip</th>
+                    <th>Email</th>
+                    <th>Member Class</th>
+                    <th>Monthly Dues</th>
+                    <th>Date Joined</th>
+                </tr>
+            </thead>
+            <tbody>
+                
+                    <tr>
+
+                        <td>@Model.FirstName</td>
+                        <td>@Model.LastName</td>
+                        <td>@Model.Street_Address1</td>
+                        <td>@Model.Street_Address2</td>
+                        <td>@Model.City</td>
+                        <td>@Model.State</td>
+                        <td>@Model.Zip</td>
+                        <td>@Model.username_email</td>
+                        <td>@Model.MemberClass</td>
+                        <td>@Model.Monthly_Dues</td>
+                        <td>@Model.Date_Joined</td>
+                    </tr>
+                
+            </tbody>
+        </table>
+    
+</div>

@@ -1,0 +1,44 @@
+﻿@model List<Fund_List>
+@{
+    ViewData["Title"] = "Treehugger's Fund List";
+    Layout = "_ReportsLayout";
+}
+
+
+
+<div class="container">
+    <div class="row w3-padding-12">
+        <div class="w3-left-align">
+            <h2>Current Fund List</h2>
+           
+        </div>
+    </div>
+    <div class="col-md-8 w3-padding-16 table-responsive">
+        <table class="w3-table-all w3-small w3-card-4">
+            <thead>
+                <tr>
+                    <th>FundID</th>
+                    <th>Fund Name</th>
+                    <th>Status</th>
+                    <th>Start Date</th>
+                    <th>Stop Date</th>
+
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var fund in Model)
+                {
+                    <tr>
+
+                        <td>@fund.FundID</td>
+                        <td>@fund.Fund_Name</td>
+                        <td>@fund.Status</td>
+                        <td>@fund.Start_Date</td>
+                        <td>@fund.Stop_Date</td>
+
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

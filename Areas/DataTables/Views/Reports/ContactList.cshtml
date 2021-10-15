@@ -1,0 +1,60 @@
+﻿@model List<Contact_List>
+@{
+    ViewData["Title"] = "Treehugger's Contact List";
+    Layout = "_ReportsLayout";
+}
+
+
+<div class="container">
+    <div class="row w3-padding-12">
+        <div class="w3-left-align">
+            <h2>Current Contact List</h2>
+           
+        </div>
+    </div>
+    <div class="row w3-padding-16 table-responsive">
+        <table class="w3-table-all w3-small w3-card-4">
+            <thead>
+                <tr>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Street Address 1</th>
+                    <th>Stree Address 2</th>
+                    <th>City</th>
+                    <th>State</th>
+                    <th>Zip</th>
+                    <th>Phone</th>
+                    <th>Email</th>
+                    <th>Contact Pref.</th>
+                    <th>Status</th>
+                    @*
+                <th>Monthly Dues</th>
+                <th>Date Joined</th>
+                <th>Solicited By</th>
+                    *@
+                    <th>Comments</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var con in Model)
+                {
+                    <tr>
+
+                        <td>@con.FirstName</td>
+                        <td>@con.LastName</td>
+                        <td>@con.Street_Address1</td>
+                        <td>@con.Street_Address2</td>
+                        <td>@con.City</td>
+                        <td>@con.State</td>
+                        <td>@con.Zip</td>
+                        <td>@con.Phone</td>
+                        <td>@con.username_email</td>
+                        <td>@con.ContactPrefrence</td>
+                        <td>@con.Status</td>
+                        <td>@con.Comments</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

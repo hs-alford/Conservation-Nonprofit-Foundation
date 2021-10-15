@@ -1,0 +1,54 @@
+﻿@model List<Membership_List>
+@{
+    ViewData["Title"] = "Treehugger's Membership List";
+    Layout = "_ReportsLayout";
+}
+
+<div class="container">
+    <div class="row w3-padding-12">
+        <div class="w3-left-align">
+            <h2>Current Membership List</h2>
+            
+        </div>
+    </div>
+    <div class="row w3-padding-16 table-responsive">
+        <table class="w3-table-all w3-small w3-card-4">
+            <thead>
+                <tr>
+                    <th>Firstname</th>
+                    <th>Lastname</th>
+                    <th>Street Address 1</th>
+                    <th>Street Address 2</th>
+                    <th>City</th>
+                    <th>State</th>
+                    <th>Zip</th>
+                    <th>Email</th>
+                    <th>UsertypeID</th>
+                    <th>Member Class</th>
+                    <th>Monthly Dues</th>
+                    <th>Date Joined</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var memList in Model)
+                {
+                    <tr>
+
+                        <td>@memList.FirstName</td>
+                        <td>@memList.LastName</td>
+                        <td>@memList.Street_Address1</td>
+                        <td>@memList.Street_Address2</td>
+                        <td>@memList.City</td>
+                        <td>@memList.State</td>
+                        <td>@memList.Zip</td>
+                        <td>@memList.username_email</td>
+                        <td>@memList.UserTypeID</td>
+                        <td>@memList.MemberClass</td>
+                        <td>@memList.Monthly_Dues</td>
+                        <td>@memList.Date_Joined</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

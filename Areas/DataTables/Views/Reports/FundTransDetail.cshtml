@@ -1,0 +1,54 @@
+﻿@model List<Fund_Trans_Detail>
+@{
+    ViewData["Title"] = "Treehugger's Fund Transaction Details";
+    Layout = "_ReportsLayout";
+}
+
+
+<div class="container">
+    <div class="row w3-padding-12">
+        <div class="w3-left-align">
+            <h2>Fund Transactions Details</h2>
+          
+        </div>
+    </div>
+    <div class="row w3-padding-16 table-responsive">
+        <table class="w3-table-all w3-small w3-card-4">
+            <thead>
+                <tr>
+                    <th>Trans Date</th>
+                    <th>Amount</th>
+                    <th>FundID</th>
+                    <th>Fund Name</th>
+                    <th>Trans Type</th>
+                    <th>Payment Method</th>
+                    <th>Entered By</th>
+                    <th>From Acct No</th>
+                    <th>From Acct Name</th>
+                    <th>Description</th>
+                    <th>Check No</th>
+
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var fund in Model)
+                {
+                    <tr>
+                        <td>@fund.Trans_Date</td>
+                        <td>@fund.Trans_Amt</td>
+                        <td>@fund.FundID</td>
+                        <td>@fund.Fund_Name</td>
+                        <td>@fund.Trans_Type</td>
+                        <td>@fund.Pmt_Method</td>
+                        <td>@fund.Entered_By</td>
+                        <td>@fund.Trans_frm_No</td>
+                        <td>@fund.Trans_frm_Nm</td>
+                        <td>@fund.Trans_Description</td>
+                        <td>@fund.Check_No</td>
+
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

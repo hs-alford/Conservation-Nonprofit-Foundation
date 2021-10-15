@@ -1,0 +1,70 @@
+﻿@model UserTrans
+
+@{
+    ViewData["Title"] = "Add/Edit User Transaction";
+}
+<style>
+    h1 {
+        text-align: center;
+        color: black;
+    }
+    #card {
+        background-color: white;
+    }
+</style>
+<div class="container w3-blue-grey">
+    <div class="row w3-padding-16">
+        <h1>Add/Edit User Transaction</h1>
+    </div>
+
+    <form asp-action="Edit" method="post">
+        <div asp-validation-summary="All"
+             class="text-danger">
+        </div>
+
+        <div class="form-group">
+            <label asp-for="UserID">UserID</label>
+            <input asp-for="UserID" class="form-control">
+        </div>
+
+        <div class="form-group">
+            <label asp-for="Date">Date</label>
+            <input asp-for="Date" class="form-control">
+        </div>
+
+        <div class="form-group">
+            <label asp-for="Amt">Amount</label>
+            <input asp-for="Amt" class="form-control">
+        </div>
+
+        <div class="form-group">
+            <label asp-for="MethodOfPmt">Payment Method</label>
+            <select class="form-control" asp-for="MethodOfPmt">
+                <option value="1">Cash</option>
+                <option value="2">Check</option>
+                <option value="3">Credit</option>
+                <option value="4">PayPal</option>
+                <option value="5">Venmo</option>
+                <option value="6">Money Order</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="Payment_Info">Payment Information</label>
+            <input asp-for="Payment_Info" class="form-control">
+        </div>
+
+        <div class="form-group">
+            <label asp-for="Comment">Comments</label>
+            <textarea class="form-control" asp-for="Comment" rows="3"></textarea>
+        </div>
+
+        <input type="hidden" asp-for="UserTransID" />
+
+        <button type="submit" class="btn btn-primary">
+            Save
+        </button>
+        <a asp-area="DataTables" asp-controller="UserTrans" asp-action="UserTrans"
+           class="btn btn-primary">Cancel</a>
+    </form>
+</div>

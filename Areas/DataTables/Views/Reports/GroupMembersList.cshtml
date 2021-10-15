@@ -1,0 +1,53 @@
+﻿@model List<Group_Members_List>
+@{
+    ViewData["Title"] = "Treehugger's Group Members List";
+    if ((User.IsInRole("Admin")) || (User.IsInRole("Staff")))
+    {
+        Layout = "_ReportsLayout";
+    }
+}
+
+@if (User.IsInRole("Member"))
+{
+    <a class="btn btn-primary" asp-area="Member" asp-controller="Home" asp-action="Index">Go Back</a>
+
+}
+
+<div class="container">
+    <div class="row w3-padding-12">
+        <div class="w3-left-align">
+            <h2>Current Group Members List</h2>
+
+        </div>
+    </div>
+    <div class="col-md-8 w3-padding-16 table-responsive">
+        <table class="w3-table-all w3-small w3-card-4">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Group Name</th>
+                    <th>Member Type</th>
+                    <th>Date Joined</th>
+                    <th>Date Left</th>
+                    <th>Comments</th>
+
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var gmlist in Model)
+                {
+                    <tr>
+
+                        <td>@gmlist.Name</td>
+                        <td>@gmlist.Group_Name</td>
+                        <td>@gmlist.Member_Type</td>
+                        <td>@gmlist.Date_Joined</td>
+                        <td>@gmlist.Date_Terminated</td>
+                        <td>@gmlist.Comments</td>
+
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

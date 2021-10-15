@@ -1,0 +1,63 @@
+﻿@model Fund
+
+@{
+    ViewData["Title"] = "Add/Edit Fund";
+}
+<style>
+    h1 {
+        text-align: center;
+        color: black;
+    }
+    #card {
+        background-color: white;
+    }
+</style>
+<div class="container w3-blue-grey">
+    <div class="row w3-padding-16">
+        <h1>Add/Edit Fund</h1>
+    </div>
+
+    <form asp-action="Edit" method="post">
+        <div asp-validation-summary="All"
+             class="text-danger">
+        </div>
+
+
+        <div class="form-group">
+            <label asp-for="Fund_Name">Name</label>
+            <input asp-for="Fund_Name" class="form-control">
+        </div>
+
+        <div class="form-group">
+            <label asp-for="Fund_Balance">Balance</label>
+            <input asp-for="Fund_Balance" class="form-control">
+        </div>
+
+        <div class="form-group">
+            <label asp-for="Fund_Status">Fund Status</label>
+            <select class="form-control" asp-for="Fund_Status">
+                <option value="A">Active</option>
+                <option value="I">Inactive</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="Fund_Start_Date">Start Date</label>
+            <input asp-for="Fund_Start_Date" class="form-control">
+        </div>
+
+        <div class="form-group">
+            <label asp-for="Fund_Stop_Date">Stop Date</label>
+            <input asp-for="Fund_Stop_Date" class="form-control">
+        </div>
+
+
+        <input type="hidden" asp-for="FundID" />
+
+        <button type="submit" class="btn btn-primary">
+            Save
+        </button>
+        <a asp-area="DataTables" asp-controller="Fund" asp-action="Fund"
+           class="btn btn-primary">Cancel</a>
+    </form>
+</div>

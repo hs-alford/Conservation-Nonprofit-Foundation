@@ -1,0 +1,61 @@
+﻿@model List<News_Detail>
+@{
+    ViewData["Title"] = "Treehugger's News Details";
+    if ((User.IsInRole("Admin")) || (User.IsInRole("Staff")))
+    {
+        Layout = "_ReportsLayout";
+    }
+}
+
+@if (User.IsInRole("Member"))
+{
+    <a class="btn btn-primary" asp-area="Member" asp-controller="Home" asp-action="Index">Go Back</a>
+
+}
+
+
+<div class="container">
+    <div class="row w3-padding-12">
+        <div class="w3-left-align">
+            <h2>Currents News Details</h2>
+        </div>
+    </div>
+
+    <div class="col-md-8 w3-padding-16 table-responsive">
+        <table class="w3-table-all w3-small w3-card-4" id="myTable">
+            <thead>
+                <tr>
+                    <th>Event Date</th>
+                    <th>Title</th>
+                    <th>Description</th>
+                    <th>Entered By</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var news in Model)
+                {
+                    <tr>
+
+                        <td>@news.Event_Date</td>
+                        <td>@news.Title</td>
+                        <td>@news.Description</td>
+                        <td>@news.Entered_By</td>
+
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<script>
+    $(document).ready(function () {
+        $("#myInput").on("keyup", function () {
+            var value = $(this).val().toLowerCase();
+            $("#myTable tr").filter(function () {
+                $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+            });
+        });
+    });
+</script>
+

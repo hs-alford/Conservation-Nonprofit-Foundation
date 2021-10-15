@@ -1,0 +1,76 @@
+﻿@model Treehuggers_WebApp01.Areas.Admin.Models.AppUserViewModel
+@{
+    ViewData["Title"] = " | Manage Users";
+}
+
+
+<div class="container">
+    <div class="row">
+        <a class="btn btn-primary btn-sm" asp-area="Admin" asp-controller="Home" asp-action="Index">
+            <span class="glyphicon glyphicon-arrow-left"></span> Back
+        </a>
+        <h1 class="mb-2">Manage Users</h1>
+
+        @*        <h5 class="mt-2"><a asp-action="Add">Add a User</a></h5>
+        *@
+    </div>
+    <div class="row">
+        <div class="col-md-10">
+            <table class="w3-table-all table-condensed w3-card-4">
+                <thead>
+                    <tr><th>Username</th><th>Roles</th><th></th><th></th><th></th></tr>
+                </thead>
+                <tbody>
+                    @if (Model.AppUsers.Count() == 0)
+                    {
+                        <tr><td colspan="5">There are no user accounts.</td></tr>
+                    }
+                    else
+                    {
+                        @foreach (ApplicationUser user in Model.AppUsers)
+                        {
+                            <tr>
+                                <td>@user.UserName</td>
+                                <td>
+                                    @foreach (string roleName in user.RoleNames)
+                                    {
+                                        <div>@roleName</div>
+                                    }
+                                </td>
+                                <td>
+                                    <form method="post" asp-action="Delete" asp-route-id="@user.Id">
+                                        <button class="btn btn-danger" type="submit">Delete</button>
+                                    </form>
+                                </td>
+                                <td>
+                                    <form method="post" asp-action="AddToAdmin" asp-route-id="@user.Id">
+                                        <button class="btn btn-primary" type="submit">Add To Admin</button>
+                                    </form>
+                                    <form method="post" asp-action="AddToStaff" asp-route-id="@user.Id">
+                                        <button class="btn btn-primary" type="submit">Add To Staff</button>
+                                    </form>
+                                    <form method="post" asp-action="AddToMember" asp-route-id="@user.Id">
+                                        <button class="btn btn-primary" type="submit">Add To Member</button>
+                                    </form>
+                                </td>
+                                <td>
+                                    <form method="post" asp-action="RemoveFromAdmin" asp-route-id="@user.Id">
+                                        <button class="btn btn-primary" type="submit">Remove From Admin</button>
+                                    </form>
+                                    <form method="post" asp-action="RemoveFromStaff" asp-route-id="@user.Id">
+                                        <button class="btn btn-primary" type="submit">Remove From Staff</button>
+                                    </form>
+                                    <form method="post" asp-action="RemoveFromMember" asp-route-id="@user.Id">
+                                        <button class="btn btn-primary" type="submit">Remove From Member</button>
+                                    </form>
+                                </td>
+                            </tr>
+                        }
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+

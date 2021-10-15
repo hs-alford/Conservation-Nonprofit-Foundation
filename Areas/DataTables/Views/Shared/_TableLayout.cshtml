@@ -1,0 +1,147 @@
+﻿@model Treehuggers_WebApp01.ViewModel.treehuggersViewModel
+@{
+    Layout = "_Layout";
+}
+
+@*Shared Layout for the data tables, displays the sidebar on each page.*@
+
+<head>
+    <style>
+        h2 {
+            text-align: center;
+        }
+    </style>
+</head>
+
+<div class="row">
+    <div class="w3-sidebar w3-bar-block w3-animate-left" style="display:none;z-index:5" id="mySidebar">
+        <button class="w3-bar-item w3-button w3-large" onclick="w3_close()">Close &times;</button>
+        
+
+        <h3 class="w3-bar-item">Menu</h3>
+
+        <a class="w3-bar-item w3-button" asp-area="DataTables" asp-controller="User" asp-action="User">
+            User
+        </a>
+
+        <a class="w3-bar-item w3-button" asp-area="DataTables" asp-controller="UserTrans" asp-action="UserTrans">
+            User Transactions
+        </a>
+
+        <a class="w3-bar-item w3-button" asp-area="DataTables" asp-controller="Group" asp-action="Group">
+            Groups
+        </a>
+
+        <a class="w3-bar-item w3-button" asp-area="DataTables" asp-controller="Member" asp-action="Member">
+            Group Member
+        </a>
+
+        <a class="w3-bar-item w3-button" asp-area="DataTables" asp-controller="Contact" asp-action="Contact">
+            Contacts
+        </a>
+
+        <a class="w3-bar-item w3-button" asp-area="DataTables" asp-controller="ContactTrans" asp-action="ContactTrans">
+            Contact Tansactions
+        </a>
+
+        <a class="w3-bar-item w3-button" asp-area="DataTables" asp-controller="Fund" asp-action="Fund">
+            Funds
+        </a>
+
+        <a class="w3-bar-item w3-button" asp-area="DataTables" asp-controller="FundTrans" asp-action="FundTrans">
+            Fund Transactions
+        </a>
+
+        <a class="w3-bar-item w3-button" asp-area="DataTables" asp-controller="CalEvents" asp-action="CalEvents">
+            Calendar Events
+        </a>
+
+        <a class="w3-bar-item w3-button" asp-area="DataTables" asp-controller="News" asp-action="News">
+            News
+        </a>
+
+    </div>
+
+    <div>
+        <div class="container-fluid table-responsive">
+            <div class="w3-overlay w3-animate-opacity" onclick="w3_close()" style="cursor:pointer" id="myOverlay"></div>
+           
+                <button class="w3-button w3-white w3-xxlarge" onclick="w3_open()">&#9776;</button>
+                @RenderBody()
+            </div>
+
+            <script>
+                function w3_open() {
+                    document.getElementById("mySidebar").style.display = "block";
+                    document.getElementById("myOverlay").style.display = "block";
+                }
+
+                function w3_close() {
+                    document.getElementById("mySidebar").style.display = "none";
+                    document.getElementById("myOverlay").style.display = "none";
+                }
+            </script>
+        </div>
+</div>
+
+
+
+
+@*<div class="row">
+    <nav class="col-sm-2 d-none d-md-block w3-light-gray w3-sidebar">
+        <div class="sidebar">
+            <ul class="nav flex-column">
+                <li class="nav-item">
+                    <a class="nav-link active" asp-area="DataTables" asp-controller="User" asp-action="User">
+                        User
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" asp-area="DataTables" asp-controller="UserTrans" asp-action="UserTrans">
+                        User Transactions
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" asp-area="DataTables" asp-controller="Group" asp-action="Group">
+                        Groups
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" asp-area="DataTables" asp-controller="Member" asp-action="Member">
+                        Group Member
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" asp-area="DataTables" asp-controller="Contact" asp-action="Contact">
+                        Contacts
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" asp-area="DataTables" asp-controller="ContactTrans" asp-action="ContactTrans">
+                        Contact Tansactions
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" asp-area="DataTables" asp-controller="Fund" asp-action="Fund">
+                        Funds
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" asp-area="DataTables" asp-controller="FundTrans" asp-action="FundTrans">
+                        Fund Transactions
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" asp-area="DataTables" asp-controller="CalEvents" asp-action="CalEvents">
+                        Calendar Events
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" asp-area="DataTables" asp-controller="News" asp-action="News">
+                        News
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>*@

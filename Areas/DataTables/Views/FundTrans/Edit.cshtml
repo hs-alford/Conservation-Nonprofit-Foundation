@@ -1,0 +1,92 @@
+﻿@model Fund_Trans
+
+@{
+    ViewData["Title"] = "Add/Edit Fund Transaction";
+}
+<style>
+    h1 {
+        text-align: center;
+        color: black;
+    }
+    #card {
+        background-color: white;
+    }
+</style>
+<div class="container w3-blue-grey">
+    <div class="row w3-padding-16">
+        <h1>Add/Edit Fund Transaction</h1>
+    </div>
+
+    <form asp-action="Edit" method="post">
+        <div asp-validation-summary="All"
+             class="text-danger">
+        </div>
+
+
+
+        <div class="form-group">
+            <label asp-for="FundID">FundID</label>
+            <input asp-for="FundID" class="form-control">
+        </div>
+
+        <div class="form-group">
+            <label asp-for="Trans_Type">Trans Type</label>
+            <select class="form-control" asp-for="Trans_Type">
+                <option value="1">Deposit</option>
+                <option value="2">Transfer</option>
+                <option value="3">Payout</option>
+                <option value="4">Other</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="Trans_Method">Trans Method</label>
+            <select class="form-control" asp-for="Trans_Method">
+                <option value="1">Cash</option>
+                <option value="2">Check</option>
+                <option value="3">Other</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="Trans_Date">Transaction Date</label>
+            <input asp-for="Trans_Date" class="form-control">
+        </div>
+
+        <div class="form-group">
+            <label asp-for="Trans_Amt">Amount</label>
+            <input asp-for="Trans_Amt" class="form-control">
+        </div>
+
+        <div class="form-group">
+            <label asp-for="Trans_UserID">Trans UserID</label>
+            <input asp-for="Trans_UserID" class="form-control">
+        </div>
+
+        <div class="form-group">
+            <label asp-for="Trans_from_acctNo">From Account Number</label>
+            <input asp-for="Trans_from_acctNo" class="form-control">
+        </div>
+
+        <div class="form-group">
+            <label asp-for="Trans_Description">Trans Description</label>
+            <textarea class="form-control" asp-for="Trans_Description" rows="3"></textarea>
+        </div>
+
+
+        <div class="form-group">
+            <label asp-for="Check_No">Check Number</label>
+            <input asp-for="Check_No" class="form-control">
+        </div>
+
+        <input type="hidden" asp-for="FundID" />
+
+        <input type="hidden" asp-for="FundTransID" />
+
+        <button type="submit" class="btn btn-primary">
+            Save
+        </button>
+        <a asp-area="DataTables" asp-controller="FundTrans" asp-action="FundTrans"
+           class="btn btn-primary">Cancel</a>
+    </form>
+</div>

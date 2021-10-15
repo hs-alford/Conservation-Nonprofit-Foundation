@@ -1,0 +1,42 @@
+﻿@model List<Contact_Transactions>
+@{
+    ViewData["Title"] = "Treehugger's Contact Transactions";
+            Layout = "_ReportsLayout";
+}
+
+
+<div class="container">
+    <div class="row w3-padding-12">
+        <div class="w3-left-align">
+            <h2>Contact Transactions</h2>
+           
+        </div>
+    </div>
+    <div class="col-md-8 w3-padding-16 table-responsive">
+        <table class="w3-table-all w3-small w3-card-4">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Contact Date</th>
+                    <th>Contact Method</th>
+                    <th>Staff Name</th>
+                    <th>Comments</th>
+
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var contrans in Model)
+                {
+                    <tr>
+
+                        <td>@contrans.Name</td>
+                        <td>@contrans.Con_Date</td>
+                        <td>@contrans.Con_Method</td>
+                        <td>@contrans.Con_Staff_Name</td>
+                        <td>@contrans.Con_Comments</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

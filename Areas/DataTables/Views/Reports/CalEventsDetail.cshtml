@@ -1,0 +1,47 @@
+﻿@model List<CalEvents_Detail>
+@{
+    ViewData["Title"] = "Treehugger's Calendar Event Details";
+    if ((User.IsInRole("Admin")) || (User.IsInRole("Staff")))
+    {
+        Layout = "_ReportsLayout";
+    }
+}
+
+@if (User.IsInRole("Member"))
+{
+    <a class="btn btn-primary" asp-area="Member" asp-controller="Home" asp-action="Index">Go Back</a>
+
+}
+
+<div class="container well">
+    <div class="row w3-padding-12">
+        <div class="w3-left-align">
+            <h2>Current Calendar Event Details</h2>
+        </div>
+    </div>
+    <div class="col-md-8 w3-padding-16 table-responsive">
+        <table class="w3-table-all w3-small w3-card-4">
+            <thead>
+                <tr>
+                    <th>Event Date</th>
+                    <th>Event Name</th>
+                    <th>Description</th>
+                    <th>Entered By</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var details in Model)
+                {
+                    <tr>
+
+                        <td>@details.Event_Date</td>
+                        <td>@details.Event_Title</td>
+                        <td>@details.Description</td>
+                        <td>@details.Entered_By</td>
+
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
