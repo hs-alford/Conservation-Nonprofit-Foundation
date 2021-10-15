@@ -1,0 +1,35 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <UserSecretsId>a8cf8969-fff8-4890-8ec6-d8df802e600e</UserSecretsId>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Content Remove="wwwroot\images\backgroundimage.jpg" />
+    <Content Remove="wwwroot\images\handholdingtree.jpg" />
+    <Content Remove="wwwroot\images\pickup2.jpg" />
+    <Content Remove="wwwroot\images\planting.jpg" />
+    <Content Remove="wwwroot\images\solar2.jpg" />
+    <Content Remove="wwwroot\images\windturbines.jpg" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="wwwroot\images\backgroundimage.jpg" />
+    <None Include="wwwroot\images\handholdingtree.jpg" />
+    <None Include="wwwroot\images\pickup2.jpg" />
+    <None Include="wwwroot\images\planting.jpg" />
+    <None Include="wwwroot\images\solar2.jpg" />
+    <None Include="wwwroot\images\windturbines.jpg" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="3.1.9" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.1.9" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="3.1.9">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+  </ItemGroup>
+
+</Project>
